@@ -1,25 +1,23 @@
 resource "aws_security_group" "nginx-sg" {
-  vpc_id = aws_vpc.my-vpc.id
+  vpc_id = aws_vpc.my_vpc.id
 
-# inbound rules for HTTP
+  #Inbound rule for HTTP
   ingress {
-    from_port = 80
-    to_port = 80
-    protocol = "tcp"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # outbound rules
+  #Outbound rule
   egress {
-
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
   tags = {
-    Name = "Nginx-server"
+    Name = "nginx-sg"
   }
-
-
 }
