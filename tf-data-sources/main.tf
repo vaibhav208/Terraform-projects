@@ -22,6 +22,14 @@ data "aws_security_groups" "name" {
   }
 }
 
+data "aws_availability_zone" "names" {
+  state = "available"
+}
+
+output "aws_zones" {
+  value = data.aws_availability_zone.names
+}
+
 output "aws_ami" {
   value = data.aws_ami.name
 }
